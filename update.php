@@ -7,12 +7,9 @@
 		$id = $_REQUEST['id'];
 	}
 	
-	if ( null==$id ) {
-		header("Location: index.html");
-	}
-	
 	if ( isset($_POST['update'])) {		
 		// keep track post values
+		$id = $_POST['id'];
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$mobile = $_POST['mobile'];
@@ -31,7 +28,6 @@
 			$q = $pdo->prepare($sql);
 			$q->execute(array($name,$email,$mobile,$id));
 			Database::disconnect();
-			header("Location: index.html");
 		}
 	} else {
 		$pdo = Database::connect();
